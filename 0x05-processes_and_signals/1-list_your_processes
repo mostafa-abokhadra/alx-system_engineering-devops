@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # all processes
 
-top
+ps
