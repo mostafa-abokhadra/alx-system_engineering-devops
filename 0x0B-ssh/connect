@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# automate connecting to server
+ssh ubuntu@34.224.94.162

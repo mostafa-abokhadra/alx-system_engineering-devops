@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# creating ssh key, type is rsa, bytes are 4096
+# pass is betty and name of private is shool
+ssh-keygen -t rsa -b 4096 -P betty -f school
