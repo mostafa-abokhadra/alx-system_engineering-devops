@@ -3,5 +3,5 @@
 
 package {'flask':
   provider  =>  'pip3',
-  ensure  =>  'present'
+  ensure  =>  '2.1.1'
 }
