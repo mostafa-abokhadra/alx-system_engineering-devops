@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
 # automate connecting to server
 ssh ubuntu@54.90.62.95
