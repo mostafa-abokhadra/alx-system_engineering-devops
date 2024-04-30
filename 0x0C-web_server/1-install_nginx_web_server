@@ -4,4 +4,4 @@ sudo apt upgrade
 sudo apt update
 sudo apt install nginx
 cd /var/www/html
-sudo echo "Hello World!" > index.html
+sudo bash -c 'echo "Hello World!" > index.html'
