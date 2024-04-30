@@ -3,5 +3,6 @@
 sudo apt upgrade
 sudo apt update
 sudo apt install nginx
+sudo ufw allow 'Nginx HTTP'
 cd /var/www/html
 sudo bash -c 'echo "Hello World!" > index.html'
