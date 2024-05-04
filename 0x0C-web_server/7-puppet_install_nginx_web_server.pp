@@ -1,3 +1,5 @@
+# set up linux conf using puppet
+
 package { 'nginx':
   ensure => 'installed'
 }
