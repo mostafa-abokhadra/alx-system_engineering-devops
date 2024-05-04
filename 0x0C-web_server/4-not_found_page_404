@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# 404 not found
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo sed -i '67i\\n\terror_page 404 /404.html;\n' /etc/nginx/sites-available/default
+sudo service nginx restart
