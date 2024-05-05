@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # haproxy
-apt-get -y update
-sudo apt-get install --no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-2.9
+sudo apt-get -y update
 sudo apt-get -y install haproxy=2.9.\*
 sudo sed -i '$a\\n\nfrontend http_front\n\tbind *:80\n\tmode http\n\tdefault_backend http_back' /etc/haproxy/haproxy.cfg
 sudo sed -i '$a\\n\nbackend http_back\n\tmode http\n\tbalance roundrobin\n\tserver webserver1 54.90.62.95:80 check\n\tserver webserver2 54.90.37.231:80 check\n' /etc/haproxy/haproxy.cfg
