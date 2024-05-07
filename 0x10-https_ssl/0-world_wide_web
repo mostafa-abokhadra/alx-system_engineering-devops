@@ -1,36 +1,21 @@
 #!/usr/bin/env bash
-# Script to look up and display information for domain names
-# Usage: 0-world_wide_web <domain> [subdomain]
-# Output format: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+# Extracts information from dig of website and prints out result
 
-# function to look up DNS records
-dns_lookup()
-{
-        address="$2.$1"
-        records=$(dig "$address" | grep "$address" | tail -n +3)
-        IFS=$'\n'
-        for record in $records
-        do
-                record_type=$(echo -e "$record" | tr '\t' ' ' | cut -d ' ' -f 4)
-                destination=$(echo -e "$record" | tr '\t' ' ' | cut -d ' ' -f 5)
-                echo "The subdomain $2 is a ""$record_type"" record and points to ""$destination"
-        done
+func1 () {
+    if [ $# -eq 1 ]; then
+	subs="www lb-01 web-01 web-02"
+    else
+	subs="$2"
+    fi
+    for bus in $subs
+    do
+	dig "$bus"."$1" | awk '!/;/' | grep '[[:blank:]]' |\
+awk -v bus="$bus" '{ print "The subdomain " bus " is a " $4 " record and points to " $5 }' ; echo | grep '[[:blank:]]'
+    done
 }
 
-# when only the domains is given
-if [ $# -eq 1 ]; then
-    domains[0]='www'
-    domains[1]='lb-01'
-    domains[2]='web-01'
-    domains[3]='web-02'
-    
-    for domain in "${domains[@]}"
-    do
-            dns_lookup "$1" "$domain"
-    done
-fi
-
-# when domain and subdomain are passed
-if [ $# -gt 1 ]; then
-        dns_lookup "$1" "$2"
+if [ "$#" -eq 1 ]; then
+    func1 "$1"
+else
+    func1 "$1" "$2"
 fi
