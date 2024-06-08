@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 """converting to csv files"""
 
+
+def formating(variable):
+    """formating the double quotation"""
+    return "\"{}\"".format(variable)
+
+
 if __name__ == '__main__':
     import csv
     import requests
@@ -23,10 +29,10 @@ if __name__ == '__main__':
     list_of_listy = []
 
     for key, value in task_dict.items():
-        listy.append(user_id)
-        listy.append(user_name)
-        listy.append(value)
-        listy.append(key)
+        listy.append(formating(user_id))
+        listy.append(formating(user_name))
+        listy.append(formating(value))
+        listy.append(formating(key))
         list_of_listy.append(list(listy))
         listy.clear()
 
