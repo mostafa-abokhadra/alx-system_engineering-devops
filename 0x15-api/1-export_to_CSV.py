@@ -2,11 +2,6 @@
 """converting to csv files"""
 
 
-def formating(variable):
-    """formating the double quotation"""
-    return "\"{}\"".format(variable)
-
-
 if __name__ == '__main__':
     import csv
     import requests
@@ -29,16 +24,17 @@ if __name__ == '__main__':
     list_of_listy = []
 
     for key, value in task_dict.items():
-        listy.append(formating(user_id))
-        listy.append(formating(user_name))
-        listy.append(formating(value))
-        listy.append(formating(key))
+        listy.append(user_id)
+        listy.append(user_name)
+        listy.append(value)
+        listy.append(key)
         list_of_listy.append(list(listy))
         listy.clear()
 
     file_name = str(user_id) + ".csv"
     output_file = open(file_name, 'w')
-    outputWriter = csv.writer(output_file)
+    outputWriter = csv.writer(
+            output_file, quotechar='"', quoting=csv.QUOTE_ALL)
 
     for listy in list_of_listy:
         outputWriter.writerow(listy)
