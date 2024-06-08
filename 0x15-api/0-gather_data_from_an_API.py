@@ -4,7 +4,8 @@
 import requests
 import sys
 
-personal_data = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(sys.argv[1]))
+personal_data = requests.get(
+        'https://jsonplaceholder.typicode.com/users/{}'.format(sys.argv[1]))
 employee = personal_data.json()
 
 todo_data = requests.get('https://jsonplaceholder.typicode.com/todos')
