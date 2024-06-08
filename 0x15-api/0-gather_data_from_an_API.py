@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""practicing api"""
+"""requesting and response of api
+"""
 
 import requests
 import sys
