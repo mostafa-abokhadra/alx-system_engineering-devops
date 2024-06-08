@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# api
 """practicing api"""
 
 import requests
